@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+    <h2>Welcome to HollyMovies</h2><br>
+
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">ID</th>
+          <th scope="col">Delete</th>
+          <th scope="col">Title</th>
+          <th scope="col">Genre</th>
+          <th scope="col">Rating</th>
+          <th scope="col">Released</th>
+        </tr>
+      </thead>
+      <tbody>
+                {% for movie in object_list %}
+                    <tr>
+                      <th scope="row">
+                          <a href="{% url 'movie_update' pk=movie.id %}">
+                                {{ movie.id }}
+                            </a>
+
+                      </th>
+                      <th scope="row">
+                          <a class="button btn btn-outline-danger" href="{% url 'movie_delete' pk=movie.id %}">Delete</a>
+                      </th>
+                      <td>{{ movie.title|upper }}</td>
+                      <td>{{ movie.genre }}</td>
+                      <td>{{ movie.rating }}</td>
+                      <td>{{ movie.released }}</td>
+                    </tr>
+                {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h2>Welcome to travel page</h2>
+<br>
+
+    <p>
+        We are going to travel to:
+        {% for city in cities %}
+            {% if city == 'Praha' %}
+                Prague
+            {% else %}
+                {{ city }}
+            {% endif %}
+
+        {% endfor %}
+    </p>
+
+    {% autoescape off %}
+        <p>{{ script }}</p>
+    {% endautoescape %}
+
+    <p>
+        We are using {{ transport }}
+    </p>
+{% endblock %}
